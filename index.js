@@ -4,4 +4,6 @@ http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
   res.write(req.url);
   res.end();
-}).listen(PORT);
+}).listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
