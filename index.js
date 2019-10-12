@@ -2,6 +2,8 @@ var http = require('http');
 var url = require('url');
 
 var tab=[
+  "mylf.com",
+  "allanal.com"
   "xhamster.com",
   "xvideos.com",
   "youporn.com",
