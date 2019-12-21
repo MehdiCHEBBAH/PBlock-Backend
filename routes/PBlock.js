@@ -1,5 +1,6 @@
 var express = require('express');
 var url = require('url');
+var getSiteWeb = require('../model/scraper');
 
 var router = express.Router();
 
@@ -12726,7 +12727,10 @@ router.get('/', function(req, res, next) {
 
   res.end();
 
-  //res.send('respond with a resource');
+});
+
+router.get('/test',async function(req, res, next) {
+  res.send(await getSiteWeb("http://bergsex.com"));
 });
 
 
