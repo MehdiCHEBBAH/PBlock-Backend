@@ -12729,9 +12729,4 @@ router.get('/', function(req, res, next) {
   //res.send('respond with a resource');
 });
 
-var sql = require('../databaseService/Connection')
-router.get('/test', function(req, res, next) {
-  sql.createConnection();
-});
-
 module.exports = router;

@@ -1,6 +1,5 @@
 # Database Configuration
 + We are using `MySQL` as a *Database Server*
-+ Ensure that the username=`root` and the password=``
 + and we are using a database called `pblock` that have to be present on the server (your machine) - create it as you want -
 + execute this query before you start (for example using `phpMyAdmin`)
 ```SQL

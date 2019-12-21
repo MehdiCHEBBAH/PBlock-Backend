@@ -1,3 +1,54 @@
-var mysql = require('mysql');
-var dbConnection = require('Connection')
+var dbConnection = require('./Connection')
 
+addWebsiteToDB = function(hostName,category,probability){
+    var con = dbConnection.createConnection();
+    const site =    {host_name: hostName,
+                    category:category,
+                    probability:probability};
+    con.query('INSERT IGNORE INTO websites SET ?', site, (err, res) => {
+        if(err) {throw err;}
+        else{console.log(`The website:"${hostName}" is in the DB.`);}
+    });
+    dbConnection.closeConnection(con);
+}    
+
+removeWebSiteFromDB = function(hostName){
+    var con = dbConnection.createConnection();
+    con.query(
+        'DELETE FROM websites WHERE host_name = ?', hostName, (err, res) => {
+            if (err){throw err;}
+            else{console.log(`The website: "${hostName}" is not in the DB anymore.`);}
+        }
+    );
+    dbConnection.closeConnection(con);
+}
+
+addWordToDB = function(label,category){
+    var con = dbConnection.createConnection();
+    const word ={word: label,
+                 category: category
+                };
+    con.query('INSERT IGNORE INTO words SET ?', word, (err, res) => {
+        if(err){throw err;}
+        else{console.log(`The word:"${label}" is in the DB.`);}
+    });
+    dbConnection.closeConnection(con);
+}
+
+removeWordFromDB = function(word){
+    var con = dbConnection.createConnection();
+    con.query(
+        'DELETE FROM words WHERE word = ?', word, (err, res) => {
+            if (err) throw err;
+            console.log(`The word:"${word}" is not in the DB anymore.`);
+        }
+    );
+    dbConnection.closeConnection(con);
+}
+
+module.exports ={
+    addWebsiteToDB,
+    removeWebSiteFromDB,
+    addWordToDB,
+    removeWordFromDB
+};

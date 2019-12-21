@@ -4,10 +4,10 @@ var mysql = require('mysql');
 module.exports = {
     createConnection: () => {
         const con = mysql.createConnection({
-            host: 'localhost',
-            user: 'root',
-            password: process.env.MYSQLPASSWD,
-            database: 'pblock'
+            host: process.env.MYSQL_HOST,
+            user: process.env.MYSQL_USER,
+            password: process.env.MYSQL_PASSWD,
+            database: process.env.MYSQL_DATABASE
           });
         
         con.connect((err) => {
@@ -17,7 +17,7 @@ module.exports = {
           }
           console.log('Connection established');
         });
-
+        
         return con;
     },
     closeConnection: (con) => {
