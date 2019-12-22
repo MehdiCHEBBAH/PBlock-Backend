@@ -46,9 +46,32 @@ removeWordFromDB = function(word){
     dbConnection.closeConnection(con);
 }
 
+
+
+getSiteFromDB = async function(website){
+
+    let subFunction = (con, website) =>{
+        return new Promise((resolve, reject) => {
+            con.query(
+              "SELECT * FROM websites WHERE host_name LIKE ?", website, (err,res) => {
+                return err ? reject(err) : resolve(res);
+              }
+            );
+        });
+    }
+
+    let result;
+    var con = dbConnection.createConnection();
+    result = await subFunction(con, website);
+    dbConnection.closeConnection(con);
+    return result;
+
+}
+
 module.exports ={
     addWebsiteToDB,
     removeWebSiteFromDB,
     addWordToDB,
-    removeWordFromDB
+    removeWordFromDB,
+    getSiteFromDB
 };
