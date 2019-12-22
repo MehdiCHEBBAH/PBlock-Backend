@@ -8,6 +8,14 @@ $ git clone https://github.com/MehdiCHEBBAH/PBlock-Backend.git
 $ cd PBlock-Backend
 $ npm install
 ```
+# Database Configuration
++ We are using `MySQL` as a *Database Server*
++ and we are using a database called `pblock` that have to be present on the server (your machine) - create it as you want -
++ execute the query located in `databaseService/CreateDB_Script.sql` before you start (for example using `phpMyAdmin`)
+
+
+
+Some documentation is [here](https://www.sitepoint.com/using-node-mysql-javascript-client/)
 
 # How to use the code
 ```
@@ -16,4 +24,4 @@ $ npm start
 
 The server will be runing on `localhost:4000`:
 + To get the static website use `/`.
-+ To know if a website is gatigorized **Pronography** use `/pblock/?q=exemple.com` and you will get a response with `y` or `n`
++ To know if a website is gatigorized **Pronography** use `/pblock/?q=exemple.com`
