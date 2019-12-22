@@ -15,14 +15,12 @@ module.exports = {
             console.error(err);
             return;
           }
-          console.log('Connection established');
         });
         
         return con;
     },
     closeConnection: (con) => {
         con.end((err) => {
-          console.log("connection closed.")
         });
     }
 }

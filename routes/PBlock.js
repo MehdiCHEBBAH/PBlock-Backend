@@ -11,10 +11,9 @@ router.get('/',async function(req, res, next) {
 
   let site = await dbService.getSiteFromDB(q.q);
 
-  console.log(site);
   if(site.length == 0) {
     res.json({ host_name: q.q, 
-               category:'nothing',
+               category:'no',
                probability:0 });
   }else{
     res.json({ host_name: site[0].host_name,
