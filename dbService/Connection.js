@@ -22,7 +22,7 @@ module.exports = {
     },
     closeConnection: (con) => {
         con.end((err) => {
-            //Do something when closing the connection
+          console.log("connection closed.")
         });
     }
 }
