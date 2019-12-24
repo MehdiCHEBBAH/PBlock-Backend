@@ -78,8 +78,28 @@ var cleanTheTextInput= (queryResult) =>{
 var calculateFrequency =(textToAnalyse)=> {
   let cleanedInput = cleanTheTextInput(textToAnalyse);
   let frequencyMapArray = getWordsMapArray(cleanedInput)
+
+  // TODO: calculate frequency rather than number 
+  
+  let totalWords = 0;
+
+  // counting the total number of words
+  frequencyMapArray.forEach(function (word){
+    totalWords += word.total;
+  });
+
+  // calculating the frequency
+  frequencyMapArray.forEach(function (word){
+    word.total = word.total/totalWords;
+  });
+
+  console.log(frequencyMapArray)
   return frequencyMapArray;
 }
+
+
+calculateFrequency("je suis suis suis zidem zidem for each of them");
+
 
 
 module.exports = calculateFrequency;
