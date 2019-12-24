@@ -3,7 +3,7 @@ var url = require('url');
 var dbService = require('../dbService/dbServices')
 
 var scrapeWebsite = require('../model/scraper');
-var calculateFrequency = require('../model/helpers')
+var calculateFrequency = require('../model/statistics')
 var router = express.Router();
 
 
