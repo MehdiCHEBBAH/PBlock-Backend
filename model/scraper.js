@@ -6,9 +6,9 @@ const fetchData = async (siteUrl) => {
     return cheerio.load(result.data);
   };
 
-  const getSiteWeb = async (siteUrl) => {
+  const scrapeWebsite = async (siteUrl) => {
     const $ = await fetchData(siteUrl);
     return $('body').text();
   };
 
-  module.exports = getSiteWeb;
+  module.exports = scrapeWebsite;
