@@ -1,8 +1,9 @@
 var express = require('express');
 var url = require('url');
-var {scrapeWebsite, calculateFrequency} = require('../model/scraper');
 var dbService = require('../dbService/dbServices')
 
+var scrapeWebsite = require('../model/scraper');
+var calculateFrequency = require('../model/helpers')
 var router = express.Router();
 
 
@@ -26,11 +27,11 @@ router.get('/',async function(req, res, next) {
 
 // For testing purpos only
 router.get('/test/',async function(req, res, next) {
+  var a = "https://www.linguee.fr/anglais-francais/traduction/purpose.html"
   var q = url.parse(req.url, true).query;
-  var site = await scrapeWebsite("https://webscraper.io/tehttps://webscraper.io/test-sites/e-commerce/allinone-popup-linksst-sites");
+  var site = await scrapeWebsite(a);
   //console.log(site);
-  res.json({'site':site,
-    'frequencies':calculateFrequency(site)});
+  res.json({'frequencies':calculateFrequency(site)});
 });
 
 module.exports = router;
