@@ -1,6 +1,6 @@
 var dbConnection = require('./Connection')
 
-addWebsiteToDB = function(hostName,category,probability){
+var addWebsiteToDB = function(hostName,category,probability){
     var con = dbConnection.createConnection();
     const site =    {host_name: hostName,
                     category:category,
@@ -12,7 +12,7 @@ addWebsiteToDB = function(hostName,category,probability){
     dbConnection.closeConnection(con);
 }    
 
-removeWebSiteFromDB = function(hostName){
+var removeWebSiteFromDB = function(hostName){
     var con = dbConnection.createConnection();
     con.query(
         'DELETE FROM websites WHERE host_name = ?', hostName, (err, res) => {
@@ -23,7 +23,7 @@ removeWebSiteFromDB = function(hostName){
     dbConnection.closeConnection(con);
 }
 
-addWordToDB = function(label,category){
+var addWordToDB = function(label,category){
     var con = dbConnection.createConnection();
     const word ={word: label,
                  category: category
@@ -35,7 +35,7 @@ addWordToDB = function(label,category){
     dbConnection.closeConnection(con);
 }
 
-removeWordFromDB = function(word){
+var removeWordFromDB = function(word){
     var con = dbConnection.createConnection();
     con.query(
         'DELETE FROM words WHERE word = ?', word, (err, res) => {
@@ -48,7 +48,7 @@ removeWordFromDB = function(word){
 
 
 
-getSiteFromDB = async function(website){
+var getSiteFromDB = async function(website){
 
     let subFunction = (con, website) =>{
         return new Promise((resolve, reject) => {
