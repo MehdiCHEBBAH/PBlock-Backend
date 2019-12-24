@@ -1,6 +1,6 @@
 var express = require('express');
 var url = require('url');
-var getSiteWeb = require('../model/scraper');
+var {scrapeWebsite, calculateFrequency} = require('../model/scraper');
 var dbService = require('../dbService/dbServices')
 
 var router = express.Router();
@@ -22,6 +22,15 @@ router.get('/',async function(req, res, next) {
                probability:site[0].probability });
   }
 
+});
+
+// For testing purpos only
+router.get('/test/',async function(req, res, next) {
+  var q = url.parse(req.url, true).query;
+  var site = await scrapeWebsite("https://webscraper.io/tehttps://webscraper.io/test-sites/e-commerce/allinone-popup-linksst-sites");
+  //console.log(site);
+  res.json({'site':site,
+    'frequencies':calculateFrequency(site)});
 });
 
 module.exports = router;
