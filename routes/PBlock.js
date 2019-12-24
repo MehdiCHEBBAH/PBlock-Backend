@@ -2,6 +2,8 @@ var express = require('express');
 var url = require('url');
 var dbService = require('../dbService/dbServices')
 
+var scrapeWebsite = require('../model/scraper');
+var calculateFrequency = require('../model/statistics')
 var router = express.Router();
 
 
@@ -21,6 +23,15 @@ router.get('/',async function(req, res, next) {
                probability:site[0].probability });
   }
 
+});
+
+// For testing purpos only
+router.get('/test/',async function(req, res, next) {
+  var a = "https://www.linguee.fr/anglais-francais/traduction/purpose.html"
+  var q = url.parse(req.url, true).query;
+  var site = await scrapeWebsite(a);
+  //console.log(site);
+  res.json({'frequencies':calculateFrequency(site)});
 });
 
 module.exports = router;
