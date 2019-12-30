@@ -79,7 +79,7 @@ var calculateFrequency =(textToAnalyse)=> {
   let cleanedInput = cleanTheTextInput(textToAnalyse);
   let frequencyMapArray = getWordsMapArray(cleanedInput)
 
-  // TODO: calculate frequency rather than number 
+  // TODO: calculate frequency rather than number // DONE
   
   let totalWords = 0;
 
@@ -93,12 +93,10 @@ var calculateFrequency =(textToAnalyse)=> {
     word.total = word.total/totalWords;
   });
 
-  console.log(frequencyMapArray)
   return frequencyMapArray;
 }
 
 
-calculateFrequency("je suis suis suis zidem zidem for each of them");
 
 
 
